@@ -34,7 +34,7 @@ public class ClasePrincipal
 	{
 		Universidad universidad = new Universidad();
 		VentanaPrincipal ventanaInicial = new VentanaPrincipal(universidad);
-		
+		//probando a ver que pasa
 		ventanaInicial.setVisible(true);
 	}
 }
