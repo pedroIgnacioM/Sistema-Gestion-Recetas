@@ -1,7 +1,3 @@
-import java.io.IOException;
-import java.util.ArrayList;
-
-
 /**********************************************************
  * 
  *  @author Pedro Morales
@@ -30,7 +26,7 @@ import java.util.ArrayList;
  * 		
  * 
  *********************************************************/
-
+//probando
 // Crear clase archivo y ver todo lo de archivos (Clase Universidad)
 public class ClasePrincipal 
 {
@@ -38,7 +34,7 @@ public class ClasePrincipal
 	{
 		Universidad universidad = new Universidad();
 		VentanaPrincipal ventanaInicial = new VentanaPrincipal(universidad);
-		
+		//probando a ver que pasa
 		ventanaInicial.setVisible(true);
 	}
 }
