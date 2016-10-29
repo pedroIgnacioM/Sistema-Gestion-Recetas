@@ -31,6 +31,7 @@ public class VentanaAlumno extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		setResizable(false);
+		setDefaultCloseOperation(0);
 		contentPane.setLayout(null);
 		
 		JPanel panelBienvenida = new JPanel();
@@ -316,6 +317,12 @@ public class VentanaAlumno extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{			
+				Archivos archivo = new Archivos();
+				try {
+					archivo.actualizarTxtAlumno(alumno);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 				ventanaAnterior.setVisible(true);
 				dispose();
 			}

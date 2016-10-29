@@ -28,6 +28,8 @@ public class VentanaDocente extends JFrame {
         contentPane.setBackground(SystemColor.menu);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
+        setResizable(false);
+        setDefaultCloseOperation(0);
         contentPane.setLayout(null);
  
  //--------------------------------------------------------------------------------------------------------------------------
@@ -75,7 +77,7 @@ public class VentanaDocente extends JFrame {
                 if(rutAlumno != null){
                     if(universidad.getListaAlumnos().existeAlumnoRut(rutAlumno)){               
                         setVisible(false);
-                        VentanaModificarAlumno ventanaModificarAlumno = new VentanaModificarAlumno(universidad.getListaAlumnos().getAlumno(rutAlumno),VentanaDocente.this);
+                        VentanaModificarAlumno ventanaModificarAlumno = new VentanaModificarAlumno(universidad.getListaAlumnos().getAlumno(rutAlumno),universidad,VentanaDocente.this);
                         ventanaModificarAlumno.setVisible(true);
                     }else
                         JOptionPane.showMessageDialog(VentanaDocente.this,"No se encontró usuario","Error de busqueda",0);
@@ -90,9 +92,15 @@ public class VentanaDocente extends JFrame {
         btnCerrarSesión.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) 
             {
+            	Archivos archivo = new Archivos();
+            	try {
+					archivo.actualizarTxtDocente(docenteFinal);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
                 VentanaPrincipal ventanaInicial = new VentanaPrincipal(universidad);
-                ventanaInicial.setVisible(true);
                 dispose();
+            	ventanaInicial.setVisible(true);
             }
         });
         btnCerrarSesión.setBounds(99, 256, 151, 29);
@@ -141,11 +149,11 @@ public class VentanaDocente extends JFrame {
             
 //------------------------------------------------------------------------------------------------------------------------  
         										//MODIFICAR NOMBRE
-    final JLabel lblmodificarNombre = new JLabel("[Modificar]");
-    lblmodificarNombre.setBounds(266, 20, 49, 14);
-    panelDatosDocente.add(lblmodificarNombre);
-    lblmodificarNombre.setForeground(Color.BLACK);
-    lblmodificarNombre.setFont(new Font("Tahoma", Font.PLAIN, 10));
+	    final JLabel lblmodificarNombre = new JLabel("[Modificar]");
+	    lblmodificarNombre.setBounds(266, 20, 49, 14);
+	    panelDatosDocente.add(lblmodificarNombre);
+	    lblmodificarNombre.setForeground(Color.BLACK);
+	    lblmodificarNombre.setFont(new Font("Tahoma", Font.PLAIN, 10));
     
         final JLabel lblDireccion = new JLabel("Direccion : "+docenteFinal.getDireccion());
         lblDireccion.setBounds(21, 60, 242, 14);
